@@ -1,0 +1,551 @@
+@charset "utf-8";
+/* ==========================================================================
+   펜션 홈페이지 STANDARD — 공통 스타일
+   지음지식서비스 / LoonLab
+   클라이언트 교체 시 :root 의 --point 한 줄만 바꾸면 포인트 컬러가 전부 바뀝니다.
+   ========================================================================== */
+
+/* ---------- 1. 디자인 토큰 ---------- */
+:root{
+  /* 포인트 — 예약 전환 요소에만 사용 */
+  --point:#0066FF;
+  --point-dark:#0052CC;
+  --point-soft:#E6F0FF;
+
+  /* 텍스트 */
+  --ink:#171719;
+  --ink-2:#5C5C5C;
+  --ink-3:#878A93;
+  --ink-inv:#FFFFFF;
+
+  /* 배경 / 라인 */
+  --bg:#FFFFFF;
+  --bg-alt:#F5F6F7;
+  --bg-dark:#171719;
+  --line:#DBDCDF;
+  --line-soft:#EDEEEF;
+
+  /* 레이아웃 */
+  --wrap:1200px;
+  --gutter:24px;
+  --header-h:80px;
+  --header-h-sm:64px;
+
+  /* 모션 */
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --dur:.5s;
+}
+
+/* ---------- 2. 리셋 ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:'Wanted Sans Variable','Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;
+  font-size:16px; line-height:1.7; letter-spacing:-.01em;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block; max-width:100%}
+a{color:inherit; text-decoration:none}
+button{font:inherit; color:inherit; background:none; border:0; cursor:pointer}
+ul,ol{margin:0; padding:0; list-style:none}
+h1,h2,h3,h4,p{margin:0}
+table{border-collapse:collapse; width:100%}
+:focus-visible{outline:2px solid var(--point); outline-offset:3px}
+
+/* ---------- 3. 레이아웃 유틸 ---------- */
+.wrap{width:100%; max-width:var(--wrap); margin:0 auto; padding:0 var(--gutter)}
+.sec{padding:140px 0}
+.sec--alt{background:var(--bg-alt)}
+.sec--tight{padding:100px 0}
+.sr-only{position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap}
+
+/* ---------- 4. 타이포 ---------- */
+.eyebrow{
+  font-size:12px; font-weight:700; letter-spacing:.22em; text-transform:uppercase;
+  color:var(--ink-3);
+}
+.sec-head{margin-bottom:56px}
+.sec-head .eyebrow{display:block; margin-bottom:14px}
+.sec-title{
+  font-size:38px; line-height:1.35; font-weight:700; letter-spacing:-.03em; color:var(--ink);
+}
+.sec-desc{margin-top:18px; font-size:16px; line-height:1.9; color:var(--ink-2)}
+.lead{font-size:19px; line-height:2; color:var(--ink-2); letter-spacing:-.02em}
+
+/* ---------- 5. 버튼 ---------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  height:52px; padding:0 30px; border-radius:2px;
+  font-size:14px; font-weight:700; letter-spacing:.06em;
+  transition:background .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+}
+/* 주요 — 예약 전환 전용 */
+.btn--primary{background:var(--point); color:#fff}
+.btn--primary:hover{background:var(--point-dark)}
+/* 보조 — VIEW / 더보기 / DETAIL */
+.btn--ghost{border:1px solid var(--line); color:var(--ink)}
+.btn--ghost:hover{border-color:var(--ink); background:var(--ink); color:#fff}
+.btn--ghost-inv{border:1px solid rgba(255,255,255,.55); color:#fff}
+.btn--ghost-inv:hover{background:#fff; color:var(--ink); border-color:#fff}
+.btn--sm{height:44px; padding:0 22px; font-size:13px}
+.btn--block{width:100%}
+
+/* 텍스트 링크형 더보기 */
+.more{
+  display:inline-flex; align-items:center; gap:10px;
+  font-size:13px; font-weight:700; letter-spacing:.16em; color:var(--ink);
+  padding-bottom:6px; border-bottom:1px solid var(--ink);
+  transition:gap .25s var(--ease), color .25s var(--ease), border-color .25s var(--ease);
+}
+.more:hover{gap:16px; color:var(--point); border-color:var(--point)}
+
+/* ---------- 6. 이미지 / 플레이스홀더 ---------- */
+.ph{
+  position:relative; overflow:hidden; background:var(--bg-alt);
+}
+.ph img{width:100%; height:100%; object-fit:cover; transition:transform .8s var(--ease)}
+.ph[data-label]::after{
+  content:attr(data-label);
+  position:absolute; left:14px; bottom:12px;
+  font-size:10px; font-weight:700; letter-spacing:.14em; color:rgba(255,255,255,.72);
+  pointer-events:none;
+}
+.ratio-43{aspect-ratio:4/3}
+.ratio-11{aspect-ratio:1/1}
+.ratio-32{aspect-ratio:3/2}
+.ratio-169{aspect-ratio:16/9}
+.zoom:hover img{transform:scale(1.06)}
+
+/* ---------- 7. 헤더 ---------- */
+.header{
+  position:fixed; inset:0 0 auto 0; z-index:100;
+  height:var(--header-h); display:flex; align-items:center;
+  transition:height .3s var(--ease), background .3s var(--ease), border-color .3s var(--ease);
+  border-bottom:1px solid transparent;
+}
+.header__inner{
+  width:100%; max-width:var(--wrap); margin:0 auto; padding:0 var(--gutter);
+  display:flex; align-items:center; justify-content:space-between; gap:32px;
+}
+.logo{
+  font-size:20px; font-weight:800; letter-spacing:.06em; color:#fff;
+  transition:color .3s var(--ease);
+}
+.logo small{display:block; font-size:9px; font-weight:600; letter-spacing:.3em; opacity:.7; margin-top:2px}
+.gnb{display:flex; gap:38px}
+.gnb > li{position:relative}
+.gnb > li > a{
+  display:block; padding:10px 0; font-size:15px; font-weight:600; letter-spacing:-.01em;
+  color:rgba(255,255,255,.92); transition:color .3s var(--ease);
+}
+.gnb > li > a:hover{color:#fff}
+
+/* GNB 호버 서브메뉴 */
+.submenu{
+  position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(8px);
+  min-width:184px; padding:10px 0; background:#fff;
+  border:1px solid var(--line-soft); box-shadow:0 14px 30px -16px rgba(0,0,0,.22);
+  opacity:0; visibility:hidden;
+  transition:opacity .25s var(--ease), transform .25s var(--ease), visibility .25s;
+}
+.gnb > li.has-sub:hover .submenu{opacity:1; visibility:visible; transform:translateX(-50%) translateY(0)}
+.submenu li a{
+  display:block; padding:9px 22px; font-size:14px; font-weight:500;
+  letter-spacing:-.01em; color:var(--ink-2); white-space:nowrap;
+}
+.submenu li a:hover{color:var(--point); background:var(--bg-alt)}
+.header__util{display:flex; align-items:center; gap:18px}
+.header__tel{font-size:14px; font-weight:700; letter-spacing:.02em; color:#fff; transition:color .3s var(--ease)}
+.header__sns{display:flex; gap:12px}
+.header__sns a{
+  width:32px; height:32px; display:grid; place-items:center; border-radius:50%;
+  border:1px solid rgba(255,255,255,.4); font-size:10px; font-weight:700; color:#fff;
+  transition:all .25s var(--ease);
+}
+.header__sns a:hover{background:#fff; color:var(--ink); border-color:#fff}
+.header .btn--primary{height:42px; padding:0 20px}
+
+/* 스크롤 후 */
+.header.is-solid{
+  height:var(--header-h-sm); background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px); border-bottom-color:var(--line-soft);
+}
+.header.is-solid .logo{color:var(--point)}
+.header.is-solid .gnb > li > a{color:var(--ink)}
+.header.is-solid .gnb > li > a:hover{color:var(--point)}
+.header.is-solid .header__tel{color:var(--ink)}
+.header.is-solid .header__sns a{border-color:var(--line); color:var(--ink-2)}
+.header.is-solid .header__sns a:hover{background:var(--ink); color:#fff; border-color:var(--ink)}
+/* 서브페이지는 항상 solid 로 시작 */
+.header--sub{background:rgba(255,255,255,.94); backdrop-filter:blur(12px); border-bottom-color:var(--line-soft)}
+.header--sub .logo{color:var(--point)}
+.header--sub .gnb > li > a,.header--sub .header__tel{color:var(--ink)}
+.header--sub .header__sns a{border-color:var(--line); color:var(--ink-2)}
+
+/* 햄버거 */
+.hamburger{display:none; width:40px; height:40px; position:relative}
+.hamburger span{
+  position:absolute; left:9px; width:22px; height:1.5px; background:#fff;
+  transition:transform .3s var(--ease), opacity .2s;
+}
+.hamburger span:nth-child(1){top:14px}
+.hamburger span:nth-child(2){top:20px}
+.hamburger span:nth-child(3){top:26px}
+.header.is-solid .hamburger span,.header--sub .hamburger span{background:var(--ink)}
+.is-menu .hamburger span{background:var(--ink)}
+.is-menu .hamburger span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.is-menu .hamburger span:nth-child(2){opacity:0}
+.is-menu .hamburger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+/* 모바일 메뉴 */
+.mmenu{
+  position:fixed; inset:0; z-index:99; background:#fff;
+  padding:calc(var(--header-h-sm) + 40px) var(--gutter) 40px;
+  transform:translateY(-100%); opacity:0; visibility:hidden;
+  transition:transform .4s var(--ease), opacity .3s, visibility .3s;
+  overflow-y:auto;
+}
+.is-menu .mmenu{transform:none; opacity:1; visibility:visible}
+.mmenu__link,.mmenu__parent{
+  display:block; width:100%; padding:18px 0; font-size:22px; font-weight:700;
+  letter-spacing:-.02em; text-align:left; color:var(--ink);
+  border-bottom:1px solid var(--line-soft);
+}
+.mmenu__parent{display:flex; align-items:center; justify-content:space-between}
+.mmenu__parent span{font-size:22px; font-weight:400; color:var(--ink-3); transition:transform .3s var(--ease)}
+.mmenu__group.is-open .mmenu__parent span{transform:rotate(45deg)}
+.mmenu__sub{display:none; padding:4px 0 14px}
+.mmenu__group.is-open .mmenu__sub{display:block}
+.mmenu__sub a{display:block; padding:11px 12px; font-size:16px; font-weight:500; color:var(--ink-2)}
+.mmenu .btn{margin-top:32px}
+
+/* ---------- 8. 히어로 ---------- */
+.hero{position:relative; height:100vh; min-height:640px; overflow:hidden; background:var(--bg-dark)}
+.hero__slides{position:absolute; inset:0}
+.hero__slide{
+  position:absolute; inset:0; opacity:0; transition:opacity 1.6s var(--ease);
+}
+.hero__slide.is-on{opacity:1}
+.hero__slide img{width:100%; height:100%; object-fit:cover}
+.hero__slide::after{
+  content:''; position:absolute; inset:0;
+  background:rgba(8,14,26,.34);
+}
+.hero__body{
+  position:relative; z-index:2; height:100%;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; color:#fff; padding:0 var(--gutter);
+}
+.hero__eyebrow{
+  font-size:12px; font-weight:700; letter-spacing:.32em; color:rgba(255,255,255,.86); margin-bottom:26px;
+}
+.hero__title{
+  font-size:56px; line-height:1.42; font-weight:600; letter-spacing:-.035em;
+  text-shadow:0 2px 24px rgba(0,0,0,.22);
+}
+.hero__scroll{
+  position:absolute; left:50%; bottom:44px; transform:translateX(-50%); z-index:2;
+  display:flex; flex-direction:column; align-items:center; gap:12px;
+  font-size:10px; font-weight:700; letter-spacing:.28em; color:rgba(255,255,255,.86);
+}
+.hero__scroll i{display:block; width:1px; height:44px; background:rgba(255,255,255,.5); animation:scrolldown 2.2s var(--ease) infinite}
+@keyframes scrolldown{0%,100%{transform:scaleY(.4); transform-origin:top; opacity:.4}50%{transform:scaleY(1); transform-origin:top; opacity:1}}
+
+/* ---------- 9. ABOUT ---------- */
+.about{display:grid; grid-template-columns:1fr 1.05fr; gap:80px; align-items:center}
+.about__txt .sec-title{margin-bottom:26px}
+.about__txt .more{margin-top:40px}
+.about__img{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+.about__img .ph:first-child{grid-column:1 / -1; aspect-ratio:16/9}
+
+/* ---------- 10. ROOMS ---------- */
+.rooms__top{display:flex; align-items:flex-end; justify-content:space-between; gap:32px; margin-bottom:44px}
+.tabs{display:flex; gap:6px; flex-wrap:wrap}
+.tab{
+  height:44px; padding:0 22px; border:1px solid var(--line); border-radius:2px;
+  font-size:14px; font-weight:600; color:var(--ink-2); white-space:nowrap;
+  transition:all .25s var(--ease);
+}
+.tab:hover{border-color:var(--ink); color:var(--ink)}
+.tab.is-on{background:var(--ink); border-color:var(--ink); color:#fff}
+.room-panel{display:grid; grid-template-columns:60fr 40fr; gap:60px; align-items:center}
+.room-panel__img{aspect-ratio:4/3}
+.room-panel__no{font-size:12px; font-weight:700; letter-spacing:.2em; color:var(--ink-3)}
+.room-panel__name{margin:14px 0 20px; font-size:32px; font-weight:700; letter-spacing:-.03em}
+.room-panel__desc{font-size:16px; line-height:1.95; color:var(--ink-2); white-space:pre-line}
+
+/* 객실 스펙 3종 — 규격 블록 */
+.spec{margin:36px 0 34px; border-top:1px solid var(--line)}
+.spec > div{
+  display:grid; grid-template-columns:132px 1fr; gap:16px; align-items:baseline;
+  padding:15px 0; border-bottom:1px solid var(--line-soft);
+}
+.spec dt{font-size:11px; font-weight:700; letter-spacing:.14em; color:var(--ink-3)}
+.spec dd{margin:0; font-size:15px; font-weight:500; color:var(--ink)}
+
+/* ---------- 11. SPECIAL ---------- */
+.special{display:grid; grid-template-columns:repeat(3,1fr); gap:32px 24px}
+.special__card{display:block}
+.special__card .ph{aspect-ratio:4/3; margin-bottom:20px}
+.special__no{font-size:11px; font-weight:700; letter-spacing:.16em; color:var(--ink-3)}
+.special__en{margin:10px 0 4px; font-size:12px; font-weight:700; letter-spacing:.18em; color:var(--point)}
+.special__ko{font-size:19px; font-weight:700; letter-spacing:-.02em}
+.special__card:hover .special__ko{color:var(--point)}
+
+/* ---------- 12. 갤러리 ---------- */
+.gallery{display:grid; grid-template-columns:repeat(4,1fr); gap:4px}
+.gallery button{aspect-ratio:1/1; overflow:hidden; background:var(--bg-alt); position:relative}
+.gallery img{width:100%; height:100%; object-fit:cover; transition:transform .8s var(--ease)}
+.gallery button:hover img{transform:scale(1.06)}
+
+/* 라이트박스 */
+.lightbox{
+  position:fixed; inset:0; z-index:200; background:rgba(10,12,16,.94);
+  display:none; align-items:center; justify-content:center; padding:5vh 5vw;
+}
+.lightbox.is-on{display:flex}
+.lightbox img{max-width:100%; max-height:90vh; object-fit:contain}
+.lightbox__close{position:absolute; top:24px; right:28px; width:44px; height:44px; color:#fff; font-size:22px}
+.lightbox__nav{position:absolute; top:50%; transform:translateY(-50%); width:52px; height:52px; color:#fff; font-size:26px}
+.lightbox__nav--prev{left:16px}
+.lightbox__nav--next{right:16px}
+
+/* ---------- 13. TRAVEL ---------- */
+.travel{display:grid; grid-template-columns:repeat(4,1fr); gap:24px}
+.travel__card .ph{aspect-ratio:4/3; margin-bottom:18px}
+.travel__name{font-size:17px; font-weight:700; letter-spacing:-.02em}
+.travel__meta{margin-top:6px; font-size:13px; color:var(--ink-3); letter-spacing:.01em}
+.travel__desc{margin-top:10px; font-size:14px; line-height:1.75; color:var(--ink-2)}
+
+/* ---------- 14. LOCATION + 예약 CTA ---------- */
+.location{display:grid; grid-template-columns:1.25fr 1fr; gap:56px; align-items:center}
+.map{aspect-ratio:16/10; background:var(--bg-alt); border:1px solid var(--line); position:relative; overflow:hidden}
+.map iframe{width:100%; height:100%; border:0; display:block}
+.map__empty{position:absolute; inset:0; display:grid; place-content:center; text-align:center; gap:8px; color:var(--ink-3); font-size:13px; letter-spacing:.06em}
+.addr{margin-top:0}
+.addr dt{font-size:11px; font-weight:700; letter-spacing:.14em; color:var(--ink-3); margin-bottom:6px}
+.addr dd{margin:0 0 22px; font-size:16px; color:var(--ink)}
+.copy-btn{display:inline-flex; align-items:center; gap:6px; margin-top:2px; font-size:12px; font-weight:700; letter-spacing:.08em; color:var(--point); border-bottom:1px solid currentColor; padding-bottom:3px}
+
+.cta{position:relative; overflow:hidden; background:var(--bg-dark)}
+.cta img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+.cta::after{content:''; position:absolute; inset:0; background:rgba(8,14,26,.52)}
+.cta__body{position:relative; z-index:2; padding:150px var(--gutter); text-align:center; color:#fff}
+.cta__title{font-size:40px; line-height:1.45; font-weight:600; letter-spacing:-.03em; white-space:pre-line}
+.cta__desc{margin-top:20px; font-size:15px; color:rgba(255,255,255,.78)}
+.cta__btns{margin-top:44px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap}
+
+/* ---------- 15. 푸터 ---------- */
+.footer{background:var(--bg-alt); padding:72px 0 84px; font-size:13px; color:var(--ink-2)}
+.footer__top{display:flex; justify-content:space-between; align-items:flex-start; gap:40px; flex-wrap:wrap}
+.footer__logo{font-size:18px; font-weight:800; letter-spacing:.08em; color:var(--ink); margin-bottom:22px}
+.footer__info{display:flex; flex-wrap:wrap; gap:6px 18px; line-height:1.9}
+.footer__links{display:flex; gap:18px; margin-top:22px}
+.footer__links a{font-weight:600; color:var(--ink)}
+.footer__links a:hover{color:var(--point)}
+.footer__sns{display:flex; gap:10px}
+.footer__sns a{
+  width:38px; height:38px; display:grid; place-items:center; border:1px solid var(--line);
+  border-radius:50%; font-size:10px; font-weight:700; color:var(--ink-2); transition:all .25s var(--ease);
+}
+.footer__sns a:hover{background:var(--ink); border-color:var(--ink); color:#fff}
+.footer__copy{margin-top:44px; padding-top:26px; border-top:1px solid var(--line); font-size:12px; color:var(--ink-3)}
+
+/* ---------- 16. 플로팅 / 팝업 / 모바일 고정바 ---------- */
+.floating{position:fixed; right:24px; bottom:24px; z-index:90; display:flex; flex-direction:column; gap:10px}
+.floating__book{
+  width:64px; height:64px; border-radius:50%; background:var(--point); color:#fff;
+  display:grid; place-items:center; text-align:center; font-size:12px; font-weight:700; line-height:1.3;
+  box-shadow:0 6px 20px rgba(0,102,255,.28); transition:background .25s var(--ease);
+}
+.floating__book:hover{background:var(--point-dark)}
+.floating__top{
+  width:64px; height:44px; border:1px solid var(--line); background:rgba(255,255,255,.92);
+  font-size:11px; font-weight:700; letter-spacing:.1em; color:var(--ink-2);
+  opacity:0; visibility:hidden; transition:opacity .3s, visibility .3s;
+}
+.floating__top.is-on{opacity:1; visibility:visible}
+
+.popup{position:fixed; inset:0; z-index:150; background:rgba(10,12,16,.6); display:none; align-items:center; justify-content:center; padding:24px}
+.popup.is-on{display:flex}
+.popup__box{width:100%; max-width:420px; background:#fff}
+.popup__box .ph{aspect-ratio:3/4}
+.popup__foot{display:flex; align-items:center; justify-content:space-between; padding:14px 18px; border-top:1px solid var(--line-soft); font-size:13px}
+.popup__foot label{display:flex; align-items:center; gap:8px; color:var(--ink-2); cursor:pointer}
+.popup__foot button{font-weight:700}
+
+.mbar{
+  display:none; position:fixed; left:0; right:0; bottom:0; z-index:95;
+  border-top:1px solid var(--line); background:#fff;
+}
+.mbar a{
+  flex:1; height:60px; display:grid; place-items:center; font-size:13px; font-weight:700;
+  border-right:1px solid var(--line-soft); color:var(--ink);
+}
+.mbar a:last-child{border-right:0; background:var(--point); color:#fff}
+
+/* ---------- 17. 서브 히어로 / 브레드크럼 ---------- */
+.subhero{position:relative; height:40vh; min-height:320px; overflow:hidden; background:var(--bg-dark)}
+.subhero img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover}
+.subhero::after{content:''; position:absolute; inset:0; background:rgba(8,14,26,.42)}
+.subhero__body{
+  position:relative; z-index:2; height:100%; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:14px; color:#fff; text-align:center;
+  padding-top:var(--header-h-sm);
+}
+.subhero__title{font-size:38px; font-weight:700; letter-spacing:-.03em}
+.crumb{font-size:12px; letter-spacing:.1em; color:rgba(255,255,255,.75)}
+.crumb span{margin:0 8px; opacity:.6}
+
+/* ---------- 18. 객실 상세 ---------- */
+.slider{position:relative; aspect-ratio:16/9; overflow:hidden; background:var(--bg-alt)}
+.slider__track{display:flex; height:100%; transition:transform .6s var(--ease)}
+.slider__track > div{flex:0 0 100%; height:100%}
+.slider__track img{width:100%; height:100%; object-fit:cover}
+.slider__nav{
+  position:absolute; top:50%; transform:translateY(-50%); width:48px; height:48px;
+  background:rgba(255,255,255,.9); color:var(--ink); font-size:20px; display:grid; place-items:center;
+}
+.slider__nav--prev{left:16px}
+.slider__nav--next{right:16px}
+.slider__count{
+  position:absolute; right:16px; bottom:16px; padding:6px 14px;
+  background:rgba(23,23,25,.72); color:#fff; font-size:12px; letter-spacing:.08em;
+}
+.detail{display:grid; grid-template-columns:1fr 1fr; gap:64px; margin-top:64px}
+.amenities{display:grid; grid-template-columns:repeat(3,1fr); gap:12px 20px; margin-top:12px}
+.amenities li{
+  display:flex; align-items:center; gap:9px; font-size:14px; color:var(--ink-2);
+  padding:9px 0; border-bottom:1px solid var(--line-soft);
+}
+.amenities li::before{content:''; width:5px; height:5px; background:var(--point); flex:none}
+.roomnav{display:flex; justify-content:space-between; gap:16px; margin-top:80px; padding-top:32px; border-top:1px solid var(--line)}
+.roomnav a{font-size:14px; font-weight:600; color:var(--ink-2)}
+.roomnav a:hover{color:var(--point)}
+.roomnav a[aria-disabled="true"]{opacity:.3; pointer-events:none}
+
+/* ---------- 19. 이용안내 (아코디언 / 표) ---------- */
+.acc{border-top:1px solid var(--ink)}
+.acc__item{border-bottom:1px solid var(--line)}
+.acc__btn{
+  width:100%; display:flex; align-items:center; justify-content:space-between; gap:20px;
+  padding:28px 4px; text-align:left; font-size:19px; font-weight:700; letter-spacing:-.02em;
+}
+.acc__btn span:last-child{font-size:14px; color:var(--ink-3); transition:transform .3s var(--ease)}
+.acc__item.is-on .acc__btn{color:var(--point)}
+.acc__item.is-on .acc__btn span:last-child{transform:rotate(45deg)}
+.acc__body{display:none; padding:0 4px 34px}
+.acc__item.is-on .acc__body{display:block}
+.info-table th,.info-table td{
+  padding:14px 16px; border-bottom:1px solid var(--line-soft); font-size:14.5px; text-align:left; vertical-align:top;
+}
+.info-table th{width:220px; font-weight:600; color:var(--ink-2); background:var(--bg-alt); white-space:nowrap}
+.info-table td{color:var(--ink)}
+.notice{
+  margin-top:20px; padding:18px 20px; background:var(--point-soft);
+  font-size:14px; line-height:1.85; color:var(--ink);
+}
+.bullets li{position:relative; padding-left:15px; font-size:14.5px; line-height:1.9; color:var(--ink-2)}
+.bullets li::before{content:''; position:absolute; left:0; top:13px; width:4px; height:4px; border-radius:50%; background:var(--ink-3)}
+
+/* ---------- 20. 스크롤 진입 모션 ---------- */
+.fadeup{opacity:0; transform:translateY(28px); transition:opacity .8s var(--ease), transform .8s var(--ease)}
+.fadeup.is-in{opacity:1; transform:none}
+@media (prefers-reduced-motion:reduce){
+  .fadeup{opacity:1; transform:none; transition:none}
+  .hero__scroll i{animation:none}
+}
+
+/* ---------- 20b. 콘텐츠 훅 유틸 (HTML 인라인 style 대체) ---------- */
+.pre-line{white-space:pre-line}
+.eyebrow + .sec-title{margin-top:14px}
+.rooms__top .sec-head{margin-bottom:0}
+.sec--flush-top{padding-top:0}
+.wrap--narrow{max-width:940px}
+.sec-head--center{text-align:center}
+.addr__lot{color:var(--ink-3); font-size:14px}
+.crumb em{font-style:normal}
+.detail__book{margin-top:36px}
+.detail .spec--flush{margin-top:0}
+.roomnav__all{font-weight:700}
+.guide-cta{margin-top:56px; text-align:center}
+.guide-sub{margin:26px 0 10px; font-size:16px; font-weight:700}
+
+/* ---------- 20c. 서브페이지 (about / special / travel / privacy) ---------- */
+.text-center{text-align:center}
+/* about — 외경 이미지 그리드 (첫 장 풀와이드) */
+.img-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+.img-grid > :first-child{grid-column:1 / -1; aspect-ratio:16/9}
+/* special — 시설 상세 (좌 이미지 / 우 텍스트) */
+.tabs--block{margin-bottom:44px}
+.special-detail{display:grid; grid-template-columns:60fr 40fr; gap:60px; align-items:start}
+.special-detail__media{display:grid; gap:16px}
+.special-detail__txt .special__en{display:block; margin:0 0 8px}
+/* travel — 전체 목록 3열 */
+.travel--page{grid-template-columns:repeat(3,1fr)}
+/* privacy — 방침 본문 */
+.policy__updated{font-size:13px; color:var(--ink-3); letter-spacing:.04em; margin-bottom:24px}
+.policy__intro{font-size:16px; line-height:1.9; color:var(--ink-2); padding-bottom:32px; border-bottom:1px solid var(--line)}
+.policy__item{padding:26px 0; border-bottom:1px solid var(--line-soft)}
+.policy__h{font-size:17px; font-weight:700; letter-spacing:-.01em; margin-bottom:12px}
+.policy__body{font-size:14.5px; line-height:1.85; color:var(--ink-2)}
+
+/* ==========================================================================
+   21. 반응형
+   ========================================================================== */
+@media (max-width:1199px){
+  :root{--wrap:100%; --gutter:32px}
+  .sec{padding:110px 0}
+  .sec-title{font-size:32px}
+  .hero__title{font-size:44px}
+  .header__tel,.header__sns{display:none}
+  .gnb{gap:26px}
+  .about{grid-template-columns:1fr; gap:48px}
+  .room-panel{grid-template-columns:1fr; gap:36px}
+  .special{grid-template-columns:repeat(2,1fr)}
+  .travel{grid-template-columns:repeat(2,1fr)}
+  .travel--page{grid-template-columns:repeat(2,1fr)}
+  .location{grid-template-columns:1fr; gap:36px}
+  .detail{grid-template-columns:1fr; gap:44px}
+  .special-detail{grid-template-columns:1fr; gap:36px}
+  .amenities{grid-template-columns:repeat(2,1fr)}
+}
+
+@media (max-width:767px){
+  :root{--gutter:20px; --header-h:64px; --header-h-sm:56px}
+  body{font-size:15px}
+  .sec{padding:80px 0}
+  .sec-head{margin-bottom:36px}
+  .sec-title{font-size:26px}
+  .lead{font-size:16px; line-height:1.9}
+  .gnb,.header .btn--primary{display:none}
+  .hamburger{display:block}
+  .hero{min-height:560px}
+  .hero__title{font-size:30px; line-height:1.5}
+  .hero__eyebrow{font-size:11px; letter-spacing:.24em; margin-bottom:18px}
+  .rooms__top{flex-direction:column; align-items:stretch; gap:22px}
+  /* ROOMS 탭 가로 스크롤 */
+  .tabs{flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:4px; scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .room-panel__name{font-size:24px}
+  .spec > div{grid-template-columns:104px 1fr; gap:10px}
+  .special{gap:26px 14px}
+  .special__ko{font-size:16px}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .travel{gap:26px 14px}
+  .cta__body{padding:96px var(--gutter)}
+  .cta__title{font-size:26px}
+  .amenities{grid-template-columns:1fr}
+  .subhero{min-height:260px}
+  .subhero__title{font-size:26px}
+  .acc__btn{font-size:16px; padding:22px 2px}
+  .info-table th{width:110px; padding:12px; font-size:13px; white-space:normal}
+  .info-table td{padding:12px; font-size:13.5px}
+  .footer{padding:56px 0 calc(60px + 40px)}
+  /* 모바일 하단 고정바 */
+  .mbar{display:flex}
+  .floating{right:16px; bottom:76px}
+  .floating__book{width:54px; height:54px; font-size:11px}
+  .floating__top{width:54px; height:38px}
+}

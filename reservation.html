@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 문서 제목·메타는 content.js 의 SITE.seo.guide 에서 main.js 가 주입 -->
+<title></title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body id="page-guide">
+
+<div id="site-header" data-sub="true"></div>
+
+<main>
+
+  <!-- 서브 히어로 -->
+  <section class="subhero">
+    <img id="subheroImg" src="" alt="">
+    <div class="subhero__body">
+      <h1 class="subhero__title" id="subheroTitle"></h1>
+      <p class="crumb">HOME<span>›</span>RESERVATION<span>›</span><em id="crumbNow"></em></p>
+    </div>
+  </section>
+
+  <section class="sec--tight">
+    <div class="wrap wrap--narrow">
+
+      <div class="sec-head sec-head--center fadeup">
+        <span class="eyebrow" id="guideEyebrow"></span>
+        <h2 class="sec-title" id="guideTitle"></h2>
+        <p class="sec-desc pre-line" id="guideDesc"></p>
+      </div>
+
+      <!-- 아코디언 (main.js 에서 렌더) -->
+      <div class="acc fadeup" id="accList"></div>
+
+      <div class="guide-cta">
+        <a class="btn btn--primary" data-booking href="#" id="guideBook"></a>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+<div id="site-floating"></div>
+
+<script src="assets/content.js"></script>
+<script src="assets/main.js"></script>
+</body>
+</html>

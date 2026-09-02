@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 문서 제목·메타는 content.js 의 SITE.seo.home 에서 main.js 가 주입 -->
+<title></title>
+<meta name="description" content="">
+<meta property="og:title" content="">
+<meta property="og:description" content="">
+<meta property="og:image" content="">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body id="page-home">
+
+<!-- 헤더 (main.js 에서 렌더) -->
+<div id="site-header"></div>
+
+<main>
+
+  <!-- ============ 1. 히어로 ============ -->
+  <section class="hero">
+    <div class="hero__slides" id="heroSlides"></div>
+    <div class="hero__body">
+      <p class="hero__eyebrow" id="heroEyebrow"></p>
+      <h1 class="hero__title pre-line" id="heroTitle"></h1>
+    </div>
+    <div class="hero__scroll"><span>SCROLL</span><i></i></div>
+  </section>
+
+  <!-- ============ 2. ABOUT ============ -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="about fadeup">
+        <div class="about__txt">
+          <span class="eyebrow" id="aboutEyebrow"></span>
+          <h2 class="sec-title pre-line" id="aboutTitle"></h2>
+          <p class="lead pre-line" id="aboutBody"></p>
+          <a class="more" id="aboutMore" href="about.html"></a>
+        </div>
+        <div class="about__img" id="aboutImg"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. ROOMS ============ -->
+  <section class="sec sec--alt" id="rooms">
+    <div class="wrap">
+      <div class="rooms__top fadeup">
+        <div class="sec-head" data-sec="rooms"></div>
+        <div class="tabs" id="roomTabs"></div>
+      </div>
+      <div class="room-panel fadeup" id="roomPanel"></div>
+    </div>
+  </section>
+
+  <!-- ============ 4. SPECIAL ============ -->
+  <section class="sec" id="special">
+    <div class="wrap">
+      <div class="sec-head fadeup" data-sec="special"></div>
+      <div class="special fadeup" id="specialGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ 5. 갤러리 ============ -->
+  <section class="sec--tight sec--flush-top">
+    <div class="gallery" id="galleryGrid"></div>
+  </section>
+
+  <!-- ============ 6. TRAVEL ============ -->
+  <section class="sec sec--alt" id="travel">
+    <div class="wrap">
+      <div class="rooms__top fadeup">
+        <div class="sec-head" data-sec="travel"></div>
+        <a class="more" id="travelMore" href="travel.html"></a>
+      </div>
+      <div class="travel fadeup" id="travelGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ 7. LOCATION ============ -->
+  <section class="sec" id="location">
+    <div class="wrap">
+      <div class="sec-head fadeup" data-sec="location"></div>
+      <div class="location fadeup">
+        <div class="map" id="mapBox"></div>
+        <dl class="addr">
+          <dt id="addrLabel"></dt>
+          <dd>
+            <span id="addrRoad"></span><br>
+            <span class="addr__lot" id="addrLot"></span><br>
+            <button class="copy-btn" type="button" id="copyAddr"></button>
+          </dd>
+          <dt id="carLabel"></dt>
+          <dd id="carRoute"></dd>
+          <dt id="transitLabel"></dt>
+          <dd id="transitRoute"></dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 8. 예약 CTA ============ -->
+  <section class="cta">
+    <img id="ctaImg" src="" alt="">
+    <div class="cta__body">
+      <h2 class="cta__title pre-line" id="ctaTitle"></h2>
+      <p class="cta__desc" id="ctaDesc"></p>
+      <div class="cta__btns">
+        <a class="btn btn--primary" data-booking href="#" id="ctaBook"></a>
+        <a class="btn btn--ghost-inv" href="reservation.html" id="ctaGuide"></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- 푸터 · 플로팅 · 팝업 (main.js 에서 렌더) -->
+<div id="site-footer"></div>
+<div id="site-floating"></div>
+<div id="site-popup"></div>
+
+<script src="assets/content.js"></script>
+<script src="assets/main.js"></script>
+</body>
+</html>

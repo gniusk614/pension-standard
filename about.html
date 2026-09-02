@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 문서 제목·메타는 content.js 의 SITE.pages.about 에서 main.js 가 주입 -->
+<title></title>
+<meta name="description" content="">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body id="page-about">
+
+<div id="site-header" data-sub="true"></div>
+
+<main>
+
+  <!-- 서브 히어로 -->
+  <section class="subhero">
+    <img id="subheroImg" src="" alt="">
+    <div class="subhero__body">
+      <h1 class="subhero__title" id="subheroTitle"></h1>
+      <p class="crumb">HOME<span>›</span>ABOUT<span>›</span><em id="crumbNow"></em></p>
+    </div>
+  </section>
+
+  <!-- 소개 카피 -->
+  <section class="sec--tight">
+    <div class="wrap wrap--narrow">
+      <div class="sec-head sec-head--center fadeup" data-sec="about"></div>
+      <p class="lead pre-line text-center fadeup" id="aboutBody"></p>
+    </div>
+  </section>
+
+  <!-- 외경 이미지 -->
+  <section class="sec--tight sec--flush-top">
+    <div class="wrap">
+      <div class="img-grid fadeup" id="aboutImages"></div>
+    </div>
+  </section>
+
+  <!-- 예약 CTA -->
+  <section class="cta">
+    <img id="ctaImg" src="" alt="">
+    <div class="cta__body">
+      <h2 class="cta__title pre-line" id="ctaTitle"></h2>
+      <p class="cta__desc" id="ctaDesc"></p>
+      <div class="cta__btns">
+        <a class="btn btn--primary" data-booking href="#" id="ctaBook"></a>
+        <a class="btn btn--ghost-inv" href="reservation.html" id="ctaGuide"></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+<div id="site-floating"></div>
+
+<script src="assets/content.js"></script>
+<script src="assets/main.js"></script>
+</body>
+</html>

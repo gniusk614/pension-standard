@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 문서 제목은 main.js 가 객실명으로 주입 (SITE.seo.room) -->
+<title></title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body id="page-room">
+
+<div id="site-header" data-sub="true"></div>
+
+<main>
+
+  <!-- 서브 히어로 -->
+  <section class="subhero">
+    <img id="subheroImg" src="" alt="">
+    <div class="subhero__body">
+      <h1 class="subhero__title" id="subheroTitle"></h1>
+      <p class="crumb">HOME<span>›</span>ROOMS<span>›</span><em id="crumbNow"></em></p>
+    </div>
+  </section>
+
+  <section class="sec--tight">
+    <div class="wrap">
+
+      <!-- 객실 이미지 슬라이드 -->
+      <div class="slider fadeup">
+        <div class="slider__track" id="slideTrack"></div>
+        <button class="slider__nav slider__nav--prev" type="button" id="slidePrev" aria-label="이전 이미지">‹</button>
+        <button class="slider__nav slider__nav--next" type="button" id="slideNext" aria-label="다음 이미지">›</button>
+        <div class="slider__count" id="slideCount"></div>
+      </div>
+
+      <!-- 객실 정보 + 스펙 3종 -->
+      <div class="detail fadeup">
+        <div>
+          <div class="room-panel__no" id="roomEn"></div>
+          <h2 class="room-panel__name" id="roomName"></h2>
+          <p class="room-panel__desc" id="roomDesc"></p>
+          <a class="btn btn--primary detail__book" data-booking href="#" id="roomBook"></a>
+        </div>
+        <div>
+          <dl class="spec spec--flush">
+            <div><dt>ROOM INFO</dt><dd id="specInfo"></dd></div>
+            <div><dt>MIN / MAX</dt><dd id="specPeople"></dd></div>
+            <div><dt>CHECK-IN / OUT</dt><dd id="specCheck"></dd></div>
+          </dl>
+          <span class="eyebrow">Amenities</span>
+          <ul class="amenities" id="roomAmenities"></ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 추가 이미지 그리드 -->
+  <section class="sec--tight sec--flush-top">
+    <div class="wrap">
+      <div class="special fadeup" id="roomGrid"></div>
+
+      <!-- 객실 페이지네이션 -->
+      <nav class="roomnav">
+        <a id="roomPrev" href="#"></a>
+        <a class="roomnav__all" id="allRooms" href="index.html#rooms"></a>
+        <a id="roomNext" href="#"></a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- 예약 CTA -->
+  <section class="cta">
+    <img id="roomCtaImg" src="" alt="">
+    <div class="cta__body">
+      <h2 class="cta__title pre-line" id="roomCtaTitle"></h2>
+      <div class="cta__btns">
+        <a class="btn btn--primary" data-booking href="#" id="roomCtaBook"></a>
+        <a class="btn btn--ghost-inv" href="reservation.html" id="roomCtaGuide"></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+<div id="site-floating"></div>
+
+<script src="assets/content.js"></script>
+<script src="assets/main.js"></script>
+</body>
+</html>
