@@ -99,7 +99,7 @@ const SITE = {
 
   /* ---------- 히어로 슬라이드 이미지 ---------- */
   hero: {
-    slides: [EXT1, EXT2, IMG + 'room-101-1.jpg']
+    slides: [EXT1, EXT2]
   },
 
   /* ---------- ABOUT (소개 카피는 추후 제공) ---------- */
