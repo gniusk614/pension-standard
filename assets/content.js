@@ -14,6 +14,8 @@ const EXT1 = IMG + 'exterior-1.jpg';
 const EXT2 = IMG + 'exterior-2.jpg';
 const BBQ1 = IMG + 'bbq-1.jpg';
 const BBQ2 = IMG + 'bbq-2.jpg';
+const BBQ3 = IMG + 'bbq-3.jpg';
+const BBQ4 = IMG + 'bbq-4.jpg';
 
 const SITE = {
   /* ---------- SEO / 메타 (main.js 가 <title>·<meta> 에 주입) ---------- */
@@ -87,7 +89,7 @@ const SITE = {
   /* ---------- 섹션 헤더 (eyebrow = 영문 라벨 / title = 국문 헤드라인) ----------
      ※ 아래 국문 헤드라인은 아직 템플릿 예시 문구입니다. 실제 카피는 추후 반영. */
   sections: {
-    hero:     { eyebrow: 'MONGSANPO · TAEAN', title: '느리게 흐르는\n여름의 온도' },
+    hero:     { eyebrow: 'MONGSANPO · TAEAN', title: '머무는 모든 순간이\n쉼이 되도록' },
     about:    { eyebrow: 'About', title: '하루가 객실마다\n다른 속도로 흐릅니다' },
     rooms:    { eyebrow: 'Rooms', title: '{rooms} 개의 객실,\n오늘 하루의 자리' },
     special:  { eyebrow: 'Special', title: '머무는 시간을 채우는 것들' },
@@ -161,7 +163,7 @@ const SITE = {
       no: '01', en: 'BBQ', ko: '바비큐', img: BBQ1,
       desc: '전용 바비큐장에서 바비큐를 즐길 수 있습니다.',
       body: '부대시설 상세 안내는 준비 중입니다.',
-      images: [BBQ1, BBQ2]
+      images: [BBQ1, BBQ2, BBQ3, BBQ4]
     },
     {
       no: '02', en: 'EXTERIOR', ko: '펜션 외관 · 전경', img: EXT1,
