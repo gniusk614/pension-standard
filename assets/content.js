@@ -170,18 +170,6 @@ const SITE = {
       desc: '몽산포 휴일펜션 전경입니다.',
       body: '부대시설 상세 안내는 준비 중입니다.',
       images: [EXT1, EXT2]
-    },
-    {
-      no: '03', en: 'FACILITY', ko: '부대시설 (준비 중)', img: PH,
-      desc: '부대시설 정보는 준비 중입니다.',
-      body: '부대시설 상세 안내는 준비 중입니다.',
-      images: [PH]
-    },
-    {
-      no: '04', en: 'FACILITY', ko: '부대시설 (준비 중)', img: PH,
-      desc: '부대시설 정보는 준비 중입니다.',
-      body: '부대시설 상세 안내는 준비 중입니다.',
-      images: [PH]
     }
   ],
 
