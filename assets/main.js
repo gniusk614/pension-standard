@@ -188,7 +188,7 @@
               '<span>' + esc(B.tel) + '</span>' +
               '<span>' + esc(z.addrRoad) + '</span>' +
               '<span>사업자등록번호 ' + esc(z.bizNo) + '</span>' +
-              '<span>통신판매업신고 ' + esc(z.mailOrderNo) + '</span>' +
+              '<span>농어촌민박 신고번호 ' + esc(z.mailOrderNo) + '</span>' +
             '</div>' +
             '<div class="footer__links">' +
               '<a href="' + (ROUTER ? '#home' : 'privacy.html') + '">' + esc(U.privacy) + '</a>' +
