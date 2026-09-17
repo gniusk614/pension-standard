@@ -684,6 +684,32 @@
     if (ROUTER) { route(); window.addEventListener('hashchange', route); }
   }
 
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
-  else boot();
+  /* ---------- 12. Firebase 콘텐츠 오버레이 (공개 페이지, SDK 없이 REST 읽기) ----------
+     관리자 페이지에서 저장한 수정본(site/content.json)을 기본값(SITE) 위에 덮어씀. */
+  var FB_PROJECT = 'mongsanpo-pension';
+  function deepMerge(t, s) {
+    for (var k in s) {
+      var v = s[k];
+      if (v && typeof v === 'object' && !Array.isArray(v) && t[k] && typeof t[k] === 'object' && !Array.isArray(t[k])) deepMerge(t[k], v);
+      else t[k] = v;
+    }
+    return t;
+  }
+  function loadOverrides() {
+    if (typeof fetch !== 'function') return Promise.resolve();
+    var url = 'https://firestore.googleapis.com/v1/projects/' + FB_PROJECT + '/databases/(default)/documents/site/content';
+    return fetch(url).then(function (r) { return r.ok ? r.json() : null; }).then(function (doc) {
+      if (doc && doc.fields && doc.fields.json && doc.fields.json.stringValue) {
+        try { deepMerge(SITE, JSON.parse(doc.fields.json.stringValue)); } catch (e) {}
+      }
+    }).catch(function () {});
+  }
+  function start() {
+    var done = false, go = function () { if (done) return; done = true; boot(); };
+    loadOverrides().then(go, go);
+    setTimeout(go, 2500); // 안전장치: 네트워크 지연 시에도 기본값으로 렌더
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+  else start();
 })();

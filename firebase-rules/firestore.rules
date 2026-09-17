@@ -1,0 +1,17 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // 사이트 콘텐츠: 누구나 읽기(공개 사이트가 읽음), 관리자만 쓰기
+    match /site/content {
+      allow read: if true;
+      allow write: if request.auth != null
+                   && request.auth.token.email == 'gniusk614@nate.com';
+    }
+
+    // 그 외 전부 차단
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

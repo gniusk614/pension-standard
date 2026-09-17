@@ -1,0 +1,91 @@
+@charset "utf-8";
+/* 몽산포 휴일펜션 — 관리자 페이지 스타일 */
+:root{
+  --point:#0066FF; --point-dark:#0052CC;
+  --ink:#171719; --ink-2:#5C5C5C; --ink-3:#878A93;
+  --bg:#F5F6F7; --card:#FFFFFF; --line:#DBDCDF; --line-soft:#EDEEEF;
+  --ok:#0a7d33; --danger:#c0392b;
+}
+*{box-sizing:border-box}
+body{margin:0; background:var(--bg); color:var(--ink);
+  font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;
+  font-size:15px; line-height:1.6; -webkit-font-smoothing:antialiased;}
+img{display:block; max-width:100%}
+button{font:inherit; cursor:pointer}
+input,textarea,select{font:inherit}
+a{color:var(--point)}
+
+/* 로그인 */
+.login-wrap{min-height:100vh; display:grid; place-items:center; padding:24px}
+.login-card{width:100%; max-width:360px; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:32px 26px}
+.login-card h1{font-size:19px; margin:0 0 4px}
+.login-card p{margin:0 0 22px; font-size:13px; color:var(--ink-3)}
+.field{margin-bottom:14px}
+.field label{display:block; font-size:12px; font-weight:700; color:var(--ink-2); margin-bottom:6px}
+.field input{width:100%; height:44px; padding:0 14px; border:1px solid var(--line); border-radius:8px; background:#fff}
+.field input:focus{outline:2px solid var(--point); outline-offset:1px}
+.btn{height:44px; padding:0 20px; border:0; border-radius:8px; font-weight:700; background:var(--point); color:#fff}
+.btn:hover{background:var(--point-dark)}
+.btn--block{width:100%}
+.btn--ghost{background:#fff; color:var(--ink); border:1px solid var(--line)}
+.btn--ghost:hover{background:var(--bg)}
+.btn--sm{height:34px; padding:0 12px; font-size:13px; border-radius:6px}
+.btn--danger{background:#fff; color:var(--danger); border:1px solid var(--line)}
+.msg{margin-top:12px; font-size:13px; min-height:18px}
+.msg.err{color:var(--danger)} .msg.ok{color:var(--ok)}
+
+/* 상단바 */
+.topbar{position:sticky; top:0; z-index:20; background:#fff; border-bottom:1px solid var(--line);
+  display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 18px}
+.topbar__title{font-size:15px; font-weight:800}
+.topbar__title small{display:block; font-size:11px; font-weight:600; color:var(--ink-3)}
+.topbar__actions{display:flex; align-items:center; gap:8px}
+.topbar__user{font-size:12px; color:var(--ink-3); margin-right:4px}
+
+/* 레이아웃 */
+.wrap{max-width:820px; margin:0 auto; padding:20px 18px 120px}
+.tabs{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:18px}
+.tab{height:36px; padding:0 14px; border:1px solid var(--line); background:#fff; border-radius:20px; font-size:13px; font-weight:600; color:var(--ink-2)}
+.tab.is-on{background:var(--ink); border-color:var(--ink); color:#fff}
+.panel{display:none}
+.panel.is-on{display:block}
+
+.card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px; margin-bottom:16px}
+.card h2{font-size:16px; margin:0 0 4px}
+.card .hint{font-size:12px; color:var(--ink-3); margin:0 0 16px}
+.card h3{font-size:14px; margin:18px 0 10px; padding-top:16px; border-top:1px solid var(--line-soft)}
+.card h3:first-of-type{border-top:0; padding-top:0}
+
+.row label{display:block; font-size:12px; font-weight:700; color:var(--ink-2); margin:12px 0 6px}
+.row input, .row textarea{width:100%; padding:10px 12px; border:1px solid var(--line); border-radius:8px; background:#fff}
+.row textarea{min-height:70px; resize:vertical; line-height:1.7}
+.row input:focus, .row textarea:focus{outline:2px solid var(--point); outline-offset:1px}
+.grid2{display:grid; grid-template-columns:1fr 1fr; gap:0 14px}
+.check{display:flex; align-items:center; gap:8px; margin:8px 0}
+.check input{width:18px; height:18px}
+
+/* 이미지 위젯 */
+.imgs{display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:10px; margin-top:8px}
+.imgcell{position:relative; border:1px solid var(--line); border-radius:8px; overflow:hidden; background:var(--bg)}
+.imgcell img{width:100%; aspect-ratio:4/3; object-fit:cover}
+.imgcell__bar{display:flex; gap:4px; padding:6px}
+.imgcell__bar button{flex:1; height:28px; font-size:11px; border-radius:5px; border:1px solid var(--line); background:#fff}
+.imgcell__bar .del{color:var(--danger)}
+.imgadd{border:1.5px dashed var(--line); border-radius:8px; display:grid; place-items:center; min-height:120px; color:var(--ink-3); font-size:13px; background:#fff; text-align:center; padding:10px}
+.imgadd:hover{border-color:var(--point); color:var(--point)}
+
+.roomblock{border:1px solid var(--line-soft); border-radius:10px; padding:14px; margin-bottom:14px}
+.roomblock > .rb-title{font-size:14px; font-weight:800; margin-bottom:2px}
+
+/* 저장 바 */
+.savebar{position:fixed; left:0; right:0; bottom:0; z-index:30; background:#fff; border-top:1px solid var(--line);
+  display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 18px}
+.savebar .savemsg{font-size:13px; color:var(--ink-3)}
+.savebar .actions{display:flex; gap:8px; margin-left:auto}
+.uploading{position:fixed; inset:0; background:rgba(255,255,255,.6); display:none; place-items:center; z-index:40; font-weight:700}
+.uploading.is-on{display:grid}
+
+@media (max-width:560px){
+  .grid2{grid-template-columns:1fr}
+  .wrap{padding:16px 12px 120px}
+}
