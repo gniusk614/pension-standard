@@ -3,12 +3,40 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- 문서 제목·메타는 content.js 의 SITE.seo.home 에서 main.js 가 주입 -->
-<title></title>
-<meta name="description" content="">
-<meta property="og:title" content="">
-<meta property="og:description" content="">
-<meta property="og:image" content="">
+<!-- 제목·메타는 정적 기본값(크롤러용) + main.js 가 SITE.seo.home 으로 동일 값 주입 -->
+<title>몽산포 휴일펜션 — 충남 태안 몽산포</title>
+<meta name="description" content="충청남도 태안 몽산포해수욕장 인근, 몽산포 휴일펜션. 전 객실 취사 가능, 전용 바비큐장.">
+<link rel="canonical" href="https://gniusk614.github.io/pension-standard/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="몽산포 휴일펜션">
+<meta property="og:description" content="충청남도 태안 몽산포, 몽산포 휴일펜션.">
+<meta property="og:image" content="https://gniusk614.github.io/pension-standard/assets/images/exterior-1.jpg">
+<meta property="og:url" content="https://gniusk614.github.io/pension-standard/">
+
+<!-- 검색엔진 소유확인: 등록 후 발급 코드를 아래 content 에 채우세요 -->
+<!-- <meta name="naver-site-verification" content="여기에_네이버_서치어드바이저_코드"> -->
+<!-- <meta name="google-site-verification" content="여기에_구글_서치콘솔_코드"> -->
+
+<!-- 구조화 데이터(LodgingBusiness) — 검색/지도 인식용 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "name": "몽산포 휴일펜션",
+  "description": "충청남도 태안 몽산포해수욕장 인근 펜션. 전 객실 취사 가능, 전용 바비큐장.",
+  "url": "https://gniusk614.github.io/pension-standard/",
+  "image": "https://gniusk614.github.io/pension-standard/assets/images/exterior-1.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "KR",
+    "addressRegion": "충청남도",
+    "addressLocality": "태안군 남면",
+    "streetAddress": "몽산포길 140"
+  },
+  "priceRange": "₩₩"
+}
+</script>
+
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/complete/WantedSansVariable.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
 <link rel="stylesheet" href="assets/style.css?v=10">
