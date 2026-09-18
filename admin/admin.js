@@ -68,7 +68,7 @@
     if (user) showApp(user);
     else { appReady = false; $('#app').hidden = true; $('#login').hidden = false; }
   });
-  try { var _lp = document.querySelector('.login-card p'); if (_lp) _lp.textContent = '등록된 관리자 계정으로 로그인하세요. (v15)'; } catch (e) {}
+  try { var _lp = document.querySelector('.login-card p'); if (_lp) _lp.textContent = '등록된 관리자 계정으로 로그인하세요. (v16)'; } catch (e) {}
   $('#loginForm').addEventListener('submit', function (e) {
     e.preventDefault();
     var btn = $('#loginForm button[type=submit]');

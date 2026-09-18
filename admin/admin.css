@@ -7,6 +7,7 @@
   --ok:#0a7d33; --danger:#c0392b;
 }
 *{box-sizing:border-box}
+[hidden]{display:none !important}   /* display:grid 등이 hidden 을 덮어쓰지 않도록 */
 body{margin:0; background:var(--bg); color:var(--ink);
   font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;
   font-size:15px; line-height:1.6; -webkit-font-smoothing:antialiased;}

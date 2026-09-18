@@ -41,7 +41,7 @@
 html{-webkit-text-size-adjust:100%}
 body{
   margin:0; background:var(--bg); color:var(--ink);
-  font-family:'Wanted Sans Variable','Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;
+  font-family:'Pretendard',-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo',sans-serif;
   font-size:16px; line-height:1.7; letter-spacing:-.01em;
   -webkit-font-smoothing:antialiased;
 }
@@ -129,10 +129,10 @@ table{border-collapse:collapse; width:100%}
   display:flex; align-items:center; justify-content:space-between; gap:32px;
 }
 .logo{
-  font-size:20px; font-weight:800; letter-spacing:.06em; color:#fff;
+  font-size:22px; font-weight:700; letter-spacing:-.02em; color:#fff;
   transition:color .3s var(--ease);
 }
-.logo small{display:block; font-size:9px; font-weight:600; letter-spacing:.3em; opacity:.7; margin-top:2px}
+.logo small{display:block; font-size:9px; font-weight:500; letter-spacing:.34em; text-transform:uppercase; opacity:.6; margin-top:4px}
 .gnb{display:flex; gap:38px}
 .gnb > li{position:relative}
 .gnb > li > a{

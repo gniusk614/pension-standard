@@ -541,6 +541,8 @@
 
     var items = [
       (G.rates && G.rates.rows) ? { t: '객실 요금', body: rateTable(G.rates) } : null,
+      (G.account) ? { t: '예약 · 입금 계좌', body: rows(G.account) +
+          '<div class="notice">예약 문의·입금은 대표번호로 확인 후 진행해 주세요. 입금자명이 예약자와 다르면 미리 알려 주시면 확인이 빠릅니다.</div>' } : null,
       { t: '입실 · 퇴실', body: rows(G.checkin) },
       { t: '인원 기준 및 추가 요금', body: rows(G.people) },
       { t: '부대시설 이용안내', body: G.facility.map(function (f) {
