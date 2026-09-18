@@ -532,6 +532,8 @@
     };
 
     var items = [
+      G.rates ? { t: '객실 요금', body: rows(G.rates) +
+          '<div class="notice">주말 요금은 <strong>금 · 토 · 공휴일 전일</strong> 기준입니다. 기준 인원 초과 시 <strong>1인당 20,000원</strong>이 추가됩니다.</div>' } : null,
       { t: '입실 · 퇴실', body: rows(G.checkin) },
       { t: '인원 기준 및 추가 요금', body: rows(G.people) },
       { t: '부대시설 이용안내', body: G.facility.map(function (f) {
@@ -544,7 +546,7 @@
       { t: '펜션 정책', body: '<ul class="bullets">' + G.policy.map(function (p) { return '<li>' + esc(p) + '</li>'; }).join('') + '</ul>' }
     ];
 
-    $('#accList').innerHTML = items.map(function (it, i) {
+    $('#accList').innerHTML = items.filter(Boolean).map(function (it, i) {
       return '<div class="acc__item' + (i === 0 ? ' is-on' : '') + '">' +
         '<button class="acc__btn" type="button"><span>' + esc(it.t) + '</span><span>＋</span></button>' +
         '<div class="acc__body">' + it.body + '</div>' +

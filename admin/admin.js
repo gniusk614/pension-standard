@@ -61,11 +61,21 @@
   });
   $('#loginForm').addEventListener('submit', function (e) {
     e.preventDefault();
+    var btn = $('#loginForm button[type=submit]');
+    btn.disabled = true;
     setMsg('loginMsg', '로그인 중…', '');
+    var settled = false;
+    var timer = setTimeout(function () {
+      if (settled) return; settled = true; btn.disabled = false;
+      setMsg('loginMsg', '응답이 지연되고 있어요. 네트워크 상태를 확인하고 다시 시도해 주세요.', 'err');
+    }, 15000);
     auth.signInWithEmailAndPassword($('#email').value.trim(), $('#password').value)
+      .then(function () { settled = true; clearTimeout(timer); /* 화면 전환은 onAuthStateChanged */ })
       .catch(function (err) {
-        var m = err.code === 'auth/invalid-credential' || err.code === 'auth/wrong-password' || err.code === 'auth/user-not-found'
-          ? '이메일 또는 비밀번호가 올바르지 않습니다.' : (err.message || '로그인 실패');
+        if (settled) return; settled = true; clearTimeout(timer); btn.disabled = false;
+        var m = (err.code === 'auth/invalid-credential' || err.code === 'auth/wrong-password' ||
+                 err.code === 'auth/user-not-found' || err.code === 'auth/invalid-email')
+          ? '이메일 또는 비밀번호가 올바르지 않습니다.' : ('로그인 실패: ' + (err.code || err.message || err));
         setMsg('loginMsg', m, 'err');
       });
   });
