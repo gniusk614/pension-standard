@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://gniusk614.github.io/pension-standard/sitemap.xml
+Sitemap: https://holidaypension.com/sitemap.xml

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://gniusk614.github.io/pension-standard/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://gniusk614.github.io/pension-standard/about.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://gniusk614.github.io/pension-standard/room.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://gniusk614.github.io/pension-standard/special.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://gniusk614.github.io/pension-standard/travel.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://gniusk614.github.io/pension-standard/reservation.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://gniusk614.github.io/pension-standard/privacy.html</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://holidaypension.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://holidaypension.com/about.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://holidaypension.com/room.html</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://holidaypension.com/special.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://holidaypension.com/travel.html</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://holidaypension.com/reservation.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://holidaypension.com/privacy.html</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
 </urlset>
