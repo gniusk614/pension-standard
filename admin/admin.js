@@ -68,24 +68,36 @@
     if (user) showApp(user);
     else { appReady = false; $('#app').hidden = true; $('#login').hidden = false; }
   });
+  try { var _lp = document.querySelector('.login-card p'); if (_lp) _lp.textContent = '등록된 관리자 계정으로 로그인하세요. (v15)'; } catch (e) {}
   $('#loginForm').addEventListener('submit', function (e) {
     e.preventDefault();
     var btn = $('#loginForm button[type=submit]');
     btn.disabled = true;
-    setMsg('loginMsg', '로그인 중…', '');
     var settled = false;
+    var step = function (t, cls) { setMsg('loginMsg', t, cls || ''); };
+    step('① 인증 요청 중…');
     var timer = setTimeout(function () {
       if (settled) return; settled = true; btn.disabled = false;
-      setMsg('loginMsg', '응답이 지연되고 있어요. 네트워크 상태를 확인하고 다시 시도해 주세요.', 'err');
-    }, 15000);
-    auth.signInWithEmailAndPassword($('#email').value.trim(), $('#password').value)
-      .then(function (cred) { settled = true; clearTimeout(timer); showApp(cred && cred.user); })
+      step('⏱ 인증 서버 응답이 없습니다. 사파리·크롬(카톡 인앱 아님)으로 열거나, 네트워크(LTE↔WiFi)를 바꿔 다시 시도해 주세요.', 'err');
+    }, 12000);
+    auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
+      .catch(function () { return auth.setPersistence(firebase.auth.Auth.Persistence.NONE); })
+      .catch(function () {})
+      .then(function () {
+        return auth.signInWithEmailAndPassword($('#email').value.trim(), $('#password').value);
+      })
+      .then(function (cred) {
+        if (settled) return; settled = true; clearTimeout(timer);
+        step('② 인증 성공 · 화면 여는 중…');
+        showApp(cred && cred.user);
+      })
       .catch(function (err) {
         if (settled) return; settled = true; clearTimeout(timer); btn.disabled = false;
-        var m = (err.code === 'auth/invalid-credential' || err.code === 'auth/wrong-password' ||
-                 err.code === 'auth/user-not-found' || err.code === 'auth/invalid-email')
-          ? '이메일 또는 비밀번호가 올바르지 않습니다.' : ('로그인 실패: ' + (err.code || err.message || err));
-        setMsg('loginMsg', m, 'err');
+        var code = (err && (err.code || err.message)) || String(err);
+        var friendly = (code === 'auth/invalid-credential' || code === 'auth/wrong-password' ||
+                        code === 'auth/user-not-found' || code === 'auth/invalid-email')
+          ? '이메일 또는 비밀번호가 올바르지 않습니다.' : ('로그인 실패 [' + code + ']');
+        step(friendly, 'err');
       });
   });
   $('#logout').addEventListener('click', function () { auth.signOut(); });
