@@ -191,9 +191,6 @@
               '<a href="' + href('guide') + '">' + esc(U.guideLink) + '</a>' +
             '</div>' +
           '</div>' +
-          '<div class="footer__sns">' +
-            '<a href="' + esc(B.kakao) + '" target="_blank" rel="noopener">KA</a>' +
-          '</div>' +
         '</div>' +
         '<div class="footer__copy">© ' + new Date().getFullYear() + ' ' + esc(z.company) + '. ALL RIGHTS RESERVED.</div>' +
       '</div></footer>';
@@ -210,7 +207,6 @@
       '</div>' +
       '<nav class="mbar">' +
         '<a href="' + esc(B.telHref) + '">' + esc(U.tel) + '</a>' +
-        '<a href="' + esc(B.kakao) + '" target="_blank" rel="noopener">' + esc(U.kakao) + '</a>' +
         '<a href="' + esc(B.booking) + '" target="_blank" rel="noopener">' + esc(U.booking) + '</a>' +
       '</nav>';
 
@@ -558,6 +554,11 @@
     }).join('');
 
     $('#guideBook').textContent = U.booking;
+    var gp = $('#guidePhone');
+    if (gp) {
+      gp.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true" style="margin-right:6px"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1l-2.3 2.2z"/></svg>' + esc(U.phoneBook);
+      gp.href = B.telHref;
+    }
 
     $('#accList').addEventListener('click', function (e) {
       var b = e.target.closest('.acc__btn'); if (!b) return;
@@ -665,6 +666,8 @@
 
   /* ---------- 11. 부트 ---------- */
   function boot() {
+    // 전화 링크는 항상 대표번호에서 자동 생성 (저장된 telHref 오차 방지)
+    B.telHref = 'tel:' + String(B.tel || '').replace(/[^0-9+]/g, '');
     applySeo();
     renderHeader();
     renderFooter();

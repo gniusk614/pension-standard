@@ -486,6 +486,7 @@ table{border-collapse:collapse; width:100%}
 .detail .spec--flush{margin-top:0}
 .roomnav__all{font-weight:700}
 .guide-cta{margin-top:56px; text-align:center}
+.guide-cta--top{margin-top:6px; margin-bottom:44px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap}
 .guide-sub{margin:26px 0 10px; font-size:16px; font-weight:700}
 
 /* 객실 요금표 (다열) */

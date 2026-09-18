@@ -25,7 +25,7 @@
   /* 편집 대상 subset 만 추출 */
   function editableFrom(s) {
     return {
-      brand: pick(s.brand, ['tel', 'telHref', 'booking', 'kakao', 'instagram', 'blog']),
+      brand: pick(s.brand, ['tel', 'telHref', 'booking']),
       popup: { use: !!s.popup.use, img: s.popup.img || '', link: s.popup.link || '#' },
       sections: { hero: { title: s.sections.hero.title }, about: { title: s.sections.about.title } },
       hero: { slides: (s.hero.slides || []).slice() },
@@ -259,12 +259,11 @@
 
   function renderBasic() {
     var p = $('#panel-basic'); p.innerHTML = '';
-    var c = card('기본 정보', '대표번호와 예약·SNS 링크입니다. 예약 링크(booking)에 네이버 예약 주소를 넣으면 모든 “실시간예약” 버튼이 연결됩니다.');
-    c.appendChild(fieldRow('대표 전화번호 (예: 041-123-4567)', data.brand, 'tel'));
+    var c = card('기본 정보', '대표번호와 실시간예약 링크입니다. 예약 링크에 네이버 예약 주소를 넣으면 모든 “실시간예약” 버튼이 연결됩니다.');
+    var telRow = fieldRow('대표 전화번호 (예: 010-1234-5678)', data.brand, 'tel');
+    $('input', telRow).addEventListener('input', function () { data.brand.telHref = 'tel:' + this.value.replace(/[^0-9+]/g, ''); });
+    c.appendChild(telRow);
     c.appendChild(fieldRow('실시간예약 링크 (네이버예약 등 URL)', data.brand, 'booking'));
-    c.appendChild(fieldRow('카카오톡 채널 URL', data.brand, 'kakao'));
-    c.appendChild(fieldRow('인스타그램 URL', data.brand, 'instagram'));
-    c.appendChild(fieldRow('네이버 블로그 URL', data.brand, 'blog'));
     p.appendChild(c);
   }
 
