@@ -57,8 +57,13 @@
     if (appReady) return; appReady = true;
     loadContent();
   }
-  // 로그인 상태 유지 시도(저장소 제한 환경이면 실패해도 세션 내 동작은 됨)
-  try { auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(function () {}); } catch (e) {}
+  // 저장 방식: 인앱 브라우저(카톡 등)에서 IndexedDB 저장이 막혀 로그인이 멈추는 것을 방지.
+  // 세션(sessionStorage) 우선 → 실패 시 메모리(NONE)로. IndexedDB(LOCAL) 는 쓰지 않음.
+  try {
+    auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
+      .catch(function () { return auth.setPersistence(firebase.auth.Auth.Persistence.NONE); })
+      .catch(function () {});
+  } catch (e) {}
   auth.onAuthStateChanged(function (user) {
     if (user) showApp(user);
     else { appReady = false; $('#app').hidden = true; $('#login').hidden = false; }
