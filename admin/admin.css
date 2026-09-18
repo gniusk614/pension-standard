@@ -43,13 +43,21 @@ a{color:var(--point)}
 .topbar__actions{display:flex; align-items:center; gap:8px}
 .topbar__user{font-size:12px; color:var(--ink-3); margin-right:4px}
 
-/* 레이아웃 */
-.wrap{max-width:820px; margin:0 auto; padding:20px 18px 120px}
-.tabs{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:18px}
-.tab{height:36px; padding:0 14px; border:1px solid var(--line); background:#fff; border-radius:20px; font-size:13px; font-weight:600; color:var(--ink-2)}
-.tab.is-on{background:var(--ink); border-color:var(--ink); color:#fff}
+/* 레이아웃 — 왼쪽 사이드 네비 + 오른쪽 패널 */
+.wrap{max-width:1060px; margin:0 auto; padding:20px 18px 120px; display:grid; grid-template-columns:196px 1fr; gap:26px; align-items:start}
+.tabs{display:flex; flex-direction:column; gap:3px; position:sticky; top:72px; margin:0}
+.tab{width:100%; text-align:left; height:auto; padding:11px 14px; border:0; background:transparent; border-radius:9px; font-size:14px; font-weight:600; color:var(--ink-2)}
+.tab:hover{background:#fff}
+.tab.is-on{background:var(--ink); color:#fff}
 .panel{display:none}
 .panel.is-on{display:block}
+@media (max-width:640px){
+  .wrap{grid-template-columns:1fr; gap:14px; padding:16px 12px 120px}
+  .tabs{position:static; flex-direction:row; overflow-x:auto; -webkit-overflow-scrolling:touch; gap:6px; padding-bottom:4px; scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{width:auto; white-space:nowrap; background:#fff; border:1px solid var(--line); border-radius:20px; padding:8px 14px; font-size:13px}
+  .tab.is-on{border-color:var(--ink)}
+}
 
 .card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px; margin-bottom:16px}
 .card h2{font-size:16px; margin:0 0 4px}
