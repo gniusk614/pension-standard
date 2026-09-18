@@ -396,7 +396,7 @@
     $('#travelMore').textContent = U.viewMore;
     $('#travelGrid').innerHTML = SITE.travel.slice(0, 4).map(function (t) {
       return '<div class="travel__card">' +
-        '<div class="ph zoom"><img src="' + esc(t.img) + '" alt="' + esc(t.name) + '"></div>' +
+        '<div class="ph zoom">' + (t.img ? '<img src="' + esc(t.img) + '" alt="' + esc(t.name) + '">' : '') + '</div>' +
         '<div class="travel__name">' + esc(t.name) + '</div>' +
         '<div class="travel__meta">' + esc(t.time) + ' · ' + esc(t.dist) + '</div>' +
         '<p class="travel__desc">' + esc(t.desc) + '</p>' +
@@ -621,7 +621,7 @@
     renderSubhero('travel');
     $('#travelList').innerHTML = SITE.travel.map(function (t) {
       return '<div class="travel__card">' +
-        '<div class="ph zoom"><img src="' + esc(t.img) + '" alt="' + esc(t.name) + '"></div>' +
+        '<div class="ph zoom">' + (t.img ? '<img src="' + esc(t.img) + '" alt="' + esc(t.name) + '">' : '') + '</div>' +
         '<div class="travel__name">' + esc(t.name) + '</div>' +
         '<div class="travel__meta">' + esc(t.time) + ' · ' + esc(t.dist) + '</div>' +
         '<p class="travel__desc">' + esc(t.desc) + '</p>' +

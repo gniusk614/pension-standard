@@ -38,6 +38,9 @@
       special: (s.special || []).map(function (x) {
         return { no: x.no, en: x.en, ko: x.ko, img: x.img, desc: x.desc, body: x.body, images: (x.images || []).slice() };
       }),
+      travel: (s.travel || []).map(function (t) {
+        return { name: t.name, time: t.time, dist: t.dist, desc: t.desc, img: t.img || '', credit: t.credit || '' };
+      }),
       gallery: (s.gallery || []).slice(),
       cta: { title: s.cta.title, desc: s.cta.desc }
     };
@@ -119,7 +122,7 @@
   /* ---------- 탭 ---------- */
   var TABS = [
     ['basic', '기본 정보'], ['popup', '팝업'], ['hero', '히어로'], ['about', '소개'],
-    ['rooms', '객실'], ['special', '부대시설'], ['gallery', '갤러리'], ['cta', '예약 배너']
+    ['rooms', '객실'], ['special', '부대시설'], ['travel', '주변여행지'], ['gallery', '갤러리'], ['cta', '예약 배너']
   ];
   function renderTabs() {
     $('#tabs').innerHTML = TABS.map(function (t, i) {
@@ -210,7 +213,48 @@
   /* ---------- 각 패널 렌더 ---------- */
   function renderAll() {
     renderBasic(); renderPopup(); renderHero(); renderAbout();
-    renderRooms(); renderSpecial(); renderGallery(); renderCta();
+    renderRooms(); renderSpecial(); renderTravel(); renderGallery(); renderCta();
+  }
+
+  // 단일 이미지 위젯 (obj[key] = 이미지 1장)
+  function singleImage(obj, key, prefix) {
+    var host = document.createElement('div'); host.className = 'imgs';
+    function draw() {
+      host.innerHTML = '';
+      if (obj[key]) {
+        var cell = document.createElement('div'); cell.className = 'imgcell';
+        cell.innerHTML = '<img src="' + imgSrc(obj[key]) + '"><div class="imgcell__bar"><button class="rep">교체</button><button class="del">삭제</button></div>';
+        $('.rep', cell).addEventListener('click', function () { upload(prefix, function (u) { obj[key] = u; draw(); }); });
+        $('.del', cell).addEventListener('click', function () { obj[key] = ''; draw(); });
+        host.appendChild(cell);
+      } else {
+        var add = document.createElement('button'); add.type = 'button'; add.className = 'imgadd'; add.textContent = '+ 사진 추가';
+        add.addEventListener('click', function () { upload(prefix, function (u) { obj[key] = u; draw(); }); });
+        host.appendChild(add);
+      }
+    }
+    draw();
+    return host;
+  }
+
+  function renderTravel() {
+    var p = $('#panel-travel'); p.innerHTML = '';
+    var c = card('주변여행지', '카드별 이름·소요시간·거리·설명·사진을 관리합니다. 사진이 없으면 빈 칸으로 보입니다.');
+    data.travel.forEach(function (t, i) {
+      var b = document.createElement('div'); b.className = 'roomblock';
+      var tt = document.createElement('div'); tt.className = 'rb-title'; tt.textContent = (i + 1) + '. ' + (t.name || ''); b.appendChild(tt);
+      b.appendChild(fieldRow('장소 이름', t, 'name'));
+      var g = document.createElement('div'); g.className = 'grid2';
+      g.appendChild(fieldRow('소요시간 (예: 차량 약 10분)', t, 'time'));
+      g.appendChild(fieldRow('거리 (예: 약 6km)', t, 'dist'));
+      b.appendChild(g);
+      b.appendChild(fieldRow('설명', t, 'desc', true));
+      b.appendChild(fieldRow('사진 출처 표기 (선택)', t, 'credit'));
+      var l = document.createElement('label'); l.style.cssText = 'display:block;font-size:12px;font-weight:700;color:var(--ink-2);margin:12px 0 6px'; l.textContent = '사진';
+      b.appendChild(l); b.appendChild(singleImage(t, 'img', 'travel-' + (i + 1)));
+      c.appendChild(b);
+    });
+    p.appendChild(c);
   }
 
   function renderBasic() {
