@@ -135,10 +135,6 @@
           '<nav><ul class="gnb">' + gnb + '</ul></nav>' +
           '<div class="header__util">' +
             '<a class="header__tel" href="' + esc(B.telHref) + '">' + esc(U.telInquiry) + '</a>' +
-            '<div class="header__sns">' +
-              '<a href="' + esc(B.instagram) + '" target="_blank" rel="noopener" title="인스타그램">IG</a>' +
-              '<a href="' + esc(B.blog) + '" target="_blank" rel="noopener" title="네이버 블로그">BL</a>' +
-            '</div>' +
             '<a class="btn btn--primary btn--sm" href="' + esc(B.booking) + '" target="_blank" rel="noopener">' + esc(U.booking) + '</a>' +
             '<button class="hamburger" type="button" aria-label="메뉴 열기"><span></span><span></span><span></span></button>' +
           '</div>' +
@@ -196,8 +192,6 @@
             '</div>' +
           '</div>' +
           '<div class="footer__sns">' +
-            '<a href="' + esc(B.instagram) + '" target="_blank" rel="noopener">IG</a>' +
-            '<a href="' + esc(B.blog) + '" target="_blank" rel="noopener">BL</a>' +
             '<a href="' + esc(B.kakao) + '" target="_blank" rel="noopener">KA</a>' +
           '</div>' +
         '</div>' +
