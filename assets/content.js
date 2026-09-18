@@ -39,8 +39,8 @@ const SITE = {
     nameEn: '몽산포 휴일펜션',                 // 로고 워드마크
     nameKo: '몽산포 휴일펜션',
     tagline: 'MONGSANPO HOLIDAY PENSION',
-    tel: '041-000-0000',                       // TODO: 대표번호 (추후 제공)
-    telHref: 'tel:041-000-0000',              // TODO
+    tel: '010-0000-0000',                      // TODO: 실제 대표 핸드폰번호로 교체
+    telHref: 'tel:010-0000-0000',             // TODO: tel: 뒤도 같이 교체
     kakao: 'https://pf.kakao.com/',           // TODO
     instagram: 'https://instagram.com/',       // TODO
     blog: 'https://blog.naver.com/',           // TODO
@@ -70,6 +70,7 @@ const SITE = {
     copyAddr: '주소 복사',
     copied: '복사되었습니다',
     tel: '전화',
+    telInquiry: '전화 문의',
     kakao: '카카오톡',
     privacy: '개인정보처리방침',
     roomsPageTitle: '객실안내',

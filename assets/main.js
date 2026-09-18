@@ -134,7 +134,7 @@
           '<a class="logo" href="index.html">' + esc(B.nameEn) + '<small>' + esc(B.tagline) + '</small></a>' +
           '<nav><ul class="gnb">' + gnb + '</ul></nav>' +
           '<div class="header__util">' +
-            '<a class="header__tel" href="' + esc(B.telHref) + '">' + esc(B.tel) + '</a>' +
+            '<a class="header__tel" href="' + esc(B.telHref) + '">' + esc(U.telInquiry) + '</a>' +
             '<div class="header__sns">' +
               '<a href="' + esc(B.instagram) + '" target="_blank" rel="noopener" title="인스타그램">IG</a>' +
               '<a href="' + esc(B.blog) + '" target="_blank" rel="noopener" title="네이버 블로그">BL</a>' +
