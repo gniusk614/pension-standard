@@ -1,9 +1,14 @@
 @charset "utf-8";
-/* 로고 전용 폰트 — 상주경천섬 (noonnu, 무료) */
+/* 로고 전용 폰트 — 고운바탕 GounBatang (noonnu, 무료) */
 @font-face{
-  font-family:'SangjuGyeongcheonseom';
-  src:url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/SANGJUGyeongcheonIsland.woff') format('woff');
+  font-family:'GounBatang';
+  src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Regular.woff') format('woff');
   font-weight:normal; font-display:swap;
+}
+@font-face{
+  font-family:'GounBatang';
+  src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/GowunBatang-Bold.woff') format('woff');
+  font-weight:700; font-display:swap;
 }
 /* ==========================================================================
    펜션 홈페이지 STANDARD — 공통 스타일
@@ -135,8 +140,8 @@ table{border-collapse:collapse; width:100%}
   display:flex; align-items:center; justify-content:space-between; gap:32px;
 }
 .logo{
-  font-family:'SangjuGyeongcheonseom','Pretendard',sans-serif;
-  font-size:27px; font-weight:400; letter-spacing:.01em; color:#fff;
+  font-family:'GounBatang','Pretendard',serif;
+  font-size:23px; font-weight:700; letter-spacing:-.01em; color:#fff;
   transition:color .3s var(--ease);
 }
 .logo small{display:block; font-family:'Pretendard',sans-serif; font-size:9px; font-weight:500; letter-spacing:.34em; text-transform:uppercase; opacity:.6; margin-top:2px}
@@ -350,7 +355,7 @@ table{border-collapse:collapse; width:100%}
 /* ---------- 15. 푸터 ---------- */
 .footer{background:var(--bg-alt); padding:72px 0 84px; font-size:13px; color:var(--ink-2)}
 .footer__top{display:flex; justify-content:space-between; align-items:flex-start; gap:40px; flex-wrap:wrap}
-.footer__logo{font-family:'SangjuGyeongcheonseom','Pretendard',sans-serif; font-size:24px; font-weight:400; letter-spacing:.01em; color:var(--ink); margin-bottom:22px}
+.footer__logo{font-family:'GounBatang','Pretendard',serif; font-size:21px; font-weight:700; letter-spacing:-.01em; color:var(--ink); margin-bottom:22px}
 .footer__info{display:flex; flex-wrap:wrap; gap:6px 18px; line-height:1.9}
 .footer__links{display:flex; gap:18px; margin-top:22px}
 .footer__links a{font-weight:600; color:var(--ink)}
