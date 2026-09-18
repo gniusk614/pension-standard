@@ -113,8 +113,8 @@ const SITE = {
   rooms: [
     {
       id: 'room-101', label: '101호', en: 'ROOM 101', name: '101호',
-      desc: '1층에서 가장 넓은 16평 원룸형 객실입니다.\n가족·단체 모임에 넉넉하며 취사가 가능합니다.',
-      spec: { info: '16평 · 1층 · 원룸형 · 취사 가능', people: '기준 5인 / 최대 6인', checkin: '15:00 / 11:00' },
+      desc: '1층에서 가장 넓은 16평 객실로, 거실과 방(침실)이 분리된 구조입니다.\n가족·단체 모임에 넉넉하며 취사가 가능합니다.',
+      spec: { info: '16평 · 1층 · 거실 1 · 방 1 · 취사 가능', people: '기준 5인 / 최대 6인', checkin: '15:00 / 11:00' },
       amenities: ['무선 와이파이', '에어컨', 'TV', '냉장고', '전기포트', '취사도구', '침구 · 수건', '주차'],
       images: [IMG + 'room-101-1.jpg', IMG + 'room-101-2.jpg', IMG + 'room-101-3.jpg', IMG + 'room-101-4.jpg', IMG + 'room-101-5.jpg', IMG + 'room-101-6.jpg', IMG + 'room-101-7.jpg']
     },
