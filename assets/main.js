@@ -135,14 +135,14 @@
           '<nav><ul class="gnb">' + gnb + '</ul></nav>' +
           '<div class="header__util">' +
             '<a class="header__tel" href="' + esc(B.telHref) + '"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.6c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1l-2.3 2.2z"/></svg>' + esc(U.telInquiry) + '</a>' +
-            '<a class="btn btn--primary btn--sm" href="' + esc(B.booking) + '" target="_blank" rel="noopener">' + esc(U.booking) + '</a>' +
+            '<a class="btn btn--primary btn--sm" data-booking href="' + esc(B.booking) + '" target="_blank" rel="noopener">' + esc(U.booking) + '</a>' +
             '<button class="hamburger" type="button" aria-label="메뉴 열기"><span></span><span></span><span></span></button>' +
           '</div>' +
         '</div>' +
       '</header>' +
       '<div class="mmenu">' +
         mnav +
-        '<a class="btn btn--primary btn--block" href="' + esc(B.booking) + '" target="_blank" rel="noopener">' + esc(U.booking) + '</a>' +
+        '<a class="btn btn--primary btn--block" data-booking href="' + esc(B.booking) + '" target="_blank" rel="noopener">' + esc(U.booking) + '</a>' +
       '</div>';
 
     var header = $('.header', host);
@@ -202,12 +202,12 @@
     if (!host) return;
     host.innerHTML =
       '<div class="floating">' +
-        '<a class="floating__book" href="' + esc(B.booking) + '" target="_blank" rel="noopener">' + esc(U.booking) + '</a>' +
+        '<a class="floating__book" data-booking href="' + esc(B.booking) + '" target="_blank" rel="noopener">' + esc(U.booking) + '</a>' +
         '<button class="floating__top" type="button">TOP</button>' +
       '</div>' +
       '<nav class="mbar">' +
         '<a href="' + esc(B.telHref) + '">' + esc(U.tel) + '</a>' +
-        '<a href="' + esc(B.booking) + '" target="_blank" rel="noopener">' + esc(U.booking) + '</a>' +
+        '<a data-booking href="' + esc(B.booking) + '" target="_blank" rel="noopener">' + esc(U.booking) + '</a>' +
       '</nav>';
 
     var top = $('.floating__top', host);
@@ -684,8 +684,17 @@
     renderPopup();
     initFadeUp();
     // 예약 링크 일괄 주입
+    var bookingReady = B.bookingReady !== false;   // false 면 준비중(클릭 시 안내)
     $$('[data-booking]').forEach(function (a) {
-      a.href = B.booking; a.target = '_blank'; a.rel = 'noopener';
+      if (bookingReady) {
+        a.href = B.booking; a.target = '_blank'; a.rel = 'noopener';
+      } else {
+        a.href = '#'; a.removeAttribute('target'); a.removeAttribute('rel');
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          alert('실시간 예약은 현재 준비 중입니다.\n예약 문의는 전화(' + B.tel + ')로 부탁드립니다.');
+        });
+      }
     });
     // 단일 파일 프리뷰: 인라인 이미지 주입
     if (typeof PH !== 'undefined') {

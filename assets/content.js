@@ -43,7 +43,8 @@ const SITE = {
     telHref: 'tel:010-3396-3035',
     instagram: 'https://instagram.com/',       // TODO (미사용)
     blog: 'https://blog.naver.com/',           // TODO (미사용)
-    booking: 'https://booking.naver.com/'      // TODO: 실시간예약 외부 링크 (야놀자 / 여기어때 등)
+    booking: 'https://booking.naver.com/',     // TODO: 실시간예약 외부 링크 (스마트스토어/네이버예약 등)
+    bookingReady: false                        // false = 준비중(버튼 클릭 시 안내). 링크 넣고 준비되면 true(또는 관리자 체크)
   },
 
   /* ---------- 사업자 정보 (푸터) ---------- */

@@ -25,7 +25,7 @@
   /* 편집 대상 subset 만 추출 */
   function editableFrom(s) {
     return {
-      brand: pick(s.brand, ['tel', 'telHref', 'booking']),
+      brand: (function () { var b = pick(s.brand, ['tel', 'telHref', 'booking']); b.bookingReady = s.brand.bookingReady !== false; return b; })(),
       popup: { use: !!s.popup.use, img: s.popup.img || '', link: s.popup.link || '#' },
       sections: { hero: { title: s.sections.hero.title }, about: { title: s.sections.about.title } },
       hero: { slides: (s.hero.slides || []).slice() },
@@ -263,7 +263,12 @@
     var telRow = fieldRow('대표 전화번호 (예: 010-1234-5678)', data.brand, 'tel');
     $('input', telRow).addEventListener('input', function () { data.brand.telHref = 'tel:' + this.value.replace(/[^0-9+]/g, ''); });
     c.appendChild(telRow);
-    c.appendChild(fieldRow('실시간예약 링크 (네이버예약 등 URL)', data.brand, 'booking'));
+    c.appendChild(fieldRow('실시간예약 링크 (스마트스토어/네이버예약 URL)', data.brand, 'booking'));
+    var ck = document.createElement('div'); ck.className = 'check';
+    ck.innerHTML = '<input type="checkbox" id="bookReady"><label for="bookReady">실시간예약 링크 활성화 (체크 안 하면 “준비 중” 안내가 뜹니다)</label>';
+    $('#bookReady', ck).checked = data.brand.bookingReady !== false;
+    $('#bookReady', ck).addEventListener('change', function () { data.brand.bookingReady = this.checked; });
+    c.appendChild(ck);
     p.appendChild(c);
   }
 
