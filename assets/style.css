@@ -474,6 +474,14 @@ table{border-collapse:collapse; width:100%}
 .guide-cta{margin-top:56px; text-align:center}
 .guide-sub{margin:26px 0 10px; font-size:16px; font-weight:700}
 
+/* 객실 요금표 (다열) */
+.table-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch}
+.rate-table{width:100%; border-collapse:collapse; min-width:520px; font-size:14px}
+.rate-table th,.rate-table td{padding:12px 10px; border-bottom:1px solid var(--line-soft); text-align:center; white-space:nowrap}
+.rate-table thead th{background:var(--bg-alt); font-size:12.5px; font-weight:700; color:var(--ink-2); letter-spacing:-.01em}
+.rate-table tbody th{text-align:left; font-weight:700; color:var(--ink)}
+.rate-table tbody tr:hover{background:var(--bg-alt)}
+
 /* ---------- 20c. 서브페이지 (about / special / travel / privacy) ---------- */
 .text-center{text-align:center}
 /* about — 외경 이미지 그리드 (첫 장 풀와이드) */

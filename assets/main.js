@@ -530,10 +530,17 @@
         return '<tr><th>' + esc(r[0]) + '</th><td>' + esc(r[1]) + '</td></tr>';
       }).join('') + '</tbody></table>';
     };
+    var rateTable = function (R) {
+      var head = '<thead><tr>' + R.head.map(function (h) { return '<th>' + esc(h) + '</th>'; }).join('') + '</tr></thead>';
+      var body = '<tbody>' + R.rows.map(function (r) {
+        return '<tr>' + r.map(function (c, i) { return i === 0 ? '<th>' + esc(c) + '</th>' : '<td>' + esc(c) + '</td>'; }).join('') + '</tr>';
+      }).join('') + '</tbody>';
+      return '<div class="table-scroll"><table class="rate-table">' + head + body + '</table></div>' +
+             (R.note ? '<div class="notice">' + esc(R.note) + '</div>' : '');
+    };
 
     var items = [
-      G.rates ? { t: '객실 요금', body: rows(G.rates) +
-          '<div class="notice">주말 요금은 <strong>금 · 토 · 공휴일 전일</strong> 기준입니다. 기준 인원 초과 시 <strong>1인당 20,000원</strong>이 추가됩니다.</div>' } : null,
+      (G.rates && G.rates.rows) ? { t: '객실 요금', body: rateTable(G.rates) } : null,
       { t: '입실 · 퇴실', body: rows(G.checkin) },
       { t: '인원 기준 및 추가 요금', body: rows(G.people) },
       { t: '부대시설 이용안내', body: G.facility.map(function (f) {
