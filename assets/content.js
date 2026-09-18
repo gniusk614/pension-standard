@@ -39,8 +39,8 @@ const SITE = {
     nameEn: '몽산포 휴일펜션',                 // 로고 워드마크
     nameKo: '몽산포 휴일펜션',
     tagline: 'MONGSANPO HOLIDAY PENSION',
-    tel: '010-0000-0000',                      // TODO: 실제 대표 핸드폰번호로 교체
-    telHref: 'tel:010-0000-0000',             // TODO: tel: 뒤도 같이 교체
+    tel: '010-3396-3035',
+    telHref: 'tel:010-3396-3035',
     kakao: 'https://pf.kakao.com/',           // TODO
     instagram: 'https://instagram.com/',       // TODO
     blog: 'https://blog.naver.com/',           // TODO
@@ -186,11 +186,11 @@ const SITE = {
      ※ 소요시간·거리는 대략값(임의)입니다. 실제 값·추천지 클라이언트 확인 후 보정. 사진 준비되면 img 교체. */
   travel: [
     { name: '몽산포해수욕장', time: '도보 2~3분', dist: '약 200m', desc: '펜션 바로 앞. 완만한 백사장과 소나무 숲이 어우러진 태안의 대표 해변으로, 일몰 명소로 유명합니다.', img: PH },
-    { name: '신두리 해안사구', time: '차량 30분', dist: '약 25km', desc: '국내 최대 규모의 해안사구. 이국적인 모래언덕 산책로가 이어집니다.', img: PH },
-    { name: '안면도 꽃지해수욕장', time: '차량 30분', dist: '약 22km', desc: '할미·할아비 바위와 서해 낙조로 이름난 해변입니다.', img: PH },
-    { name: '청산수목원', time: '차량 25분', dist: '약 18km', desc: '사계절 꽃과 연못이 아름다운 수목원. 산책 코스로 좋습니다.', img: PH },
-    { name: '만리포해수욕장', time: '차량 25분', dist: '약 20km', desc: '넓은 백사장과 해양스포츠로 유명한 해변입니다.', img: PH },
-    { name: '안면도 쥬라기박물관', time: '차량 35분', dist: '약 28km', desc: '아이와 함께 즐기기 좋은 대형 공룡 테마 박물관입니다.', img: PH }
+    { name: '몽산포항', time: '차량 약 5분', dist: '약 2km', desc: '어선이 드나드는 작은 항구. 아침 바다 풍경과 제철 수산물을 만날 수 있습니다.', img: PH },
+    { name: '청포대해수욕장', time: '차량 약 10분', dist: '약 6km', desc: '넓은 백사장과 갯벌 체험으로 유명한 해변. 가족 물놀이에 좋습니다.', img: PH },
+    { name: '쥬라기박물관', time: '차량 약 30분', dist: '약 25km', desc: '안면도의 실내 공룡 테마 박물관. 아이와 함께하는 가족 여행에 인기입니다.', img: PH },
+    { name: '태안빛축제', time: '차량 약 25분', dist: '약 18km', desc: '겨울 시즌 열리는 야간 빛 축제. 화려한 조명으로 꾸민 정원을 산책할 수 있습니다.', img: PH },
+    { name: '청산수목원', time: '차량 약 25분', dist: '약 18km', desc: '사계절 꽃과 연못, 갈대·핑크뮬리로 유명한 수목원. 사진 명소로 좋습니다.', img: PH }
   ],
 
   /* ---------- LOCATION ----------
