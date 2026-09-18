@@ -114,42 +114,42 @@ const SITE = {
     {
       id: 'room-101', label: '101호', en: 'ROOM 101', name: '101호',
       desc: '1층에서 가장 넓은 16평 객실로, 거실과 방(침실)이 분리된 구조입니다.\n가족·단체 모임에 넉넉하며 취사가 가능합니다.',
-      spec: { info: '16평 · 1층 · 거실 1 · 방 1 · 취사 가능', people: '기준 5인 / 최대 6인', checkin: '15:00 / 11:00' },
+      spec: { info: '16평 · 1층 · 거실 1 · 방 1 · 방 침대 / 거실 온돌 · 취사 가능', people: '기준 5인 / 최대 6인', checkin: '15:00 / 11:00' },
       amenities: ['무선 와이파이', '에어컨', 'TV', '냉장고', '전기포트', '취사도구', '침구 · 수건', '주차'],
       images: [IMG + 'room-101-1.jpg', IMG + 'room-101-2.jpg', IMG + 'room-101-3.jpg', IMG + 'room-101-4.jpg', IMG + 'room-101-5.jpg', IMG + 'room-101-6.jpg', IMG + 'room-101-7.jpg']
     },
     {
       id: 'room-102', label: '102호', en: 'ROOM 102', name: '102호',
       desc: '1층 12평 원룸형 객실입니다.\n가족 단위 여행에 알맞은 크기이며 주차장과 가깝습니다.',
-      spec: { info: '12평 · 1층 · 원룸형 · 취사 가능', people: '기준 4인 / 최대 5인', checkin: '15:00 / 11:00' },
+      spec: { info: '12평 · 1층 · 원룸형 · 온돌 · 취사 가능', people: '기준 4인 / 최대 5인', checkin: '15:00 / 11:00' },
       amenities: ['무선 와이파이', '에어컨', 'TV', '냉장고', '전기포트', '취사도구', '침구 · 수건', '주차'],
       images: [IMG + 'room-102-1.jpg', IMG + 'room-102-2.jpg', IMG + 'room-102-3.jpg', IMG + 'room-102-4.jpg', IMG + 'room-102-5.jpg']
     },
     {
       id: 'room-103', label: '103호', en: 'ROOM 103', name: '103호',
       desc: '1층 10평 아담한 원룸형 객실입니다.\n소규모 가족·커플 여행에 알맞습니다.',
-      spec: { info: '10평 · 1층 · 원룸형 · 취사 가능', people: '기준 3인 / 최대 4인', checkin: '15:00 / 11:00' },
+      spec: { info: '10평 · 1층 · 원룸형 · 온돌 · 취사 가능', people: '기준 3인 / 최대 4인', checkin: '15:00 / 11:00' },
       amenities: ['무선 와이파이', '에어컨', 'TV', '냉장고', '전기포트', '취사도구', '침구 · 수건', '주차'],
       images: [IMG + 'room-103-1.jpg', IMG + 'room-103-2.jpg', IMG + 'room-103-3.jpg', IMG + 'room-103-4.jpg']
     },
     {
       id: 'room-201', label: '201호', en: 'ROOM 201', name: '201호',
       desc: '2층 10평 원룸형 객실로 채광이 좋습니다.\n커플·소규모 가족에게 추천합니다.',
-      spec: { info: '10평 · 2층 · 원룸형 · 취사 가능', people: '기준 3인 / 최대 4인', checkin: '15:00 / 11:00' },
+      spec: { info: '10평 · 2층 · 원룸형 · 침대 · 취사 가능', people: '기준 3인 / 최대 4인', checkin: '15:00 / 11:00' },
       amenities: ['무선 와이파이', '에어컨', 'TV', '냉장고', '전기포트', '취사도구', '침구 · 수건', '주차'],
       images: [IMG + 'room-201-1.jpg', IMG + 'room-201-2.jpg', IMG + 'room-201-3.jpg', IMG + 'room-201-4.jpg', IMG + 'room-201-5.jpg']
     },
     {
       id: 'room-202', label: '202호', en: 'ROOM 202', name: '202호',
       desc: '2층에서 가장 넓은 12평 원룸형 객실입니다.\n일행이 많아도 여유롭습니다.',
-      spec: { info: '12평 · 2층 · 원룸형 · 취사 가능', people: '기준 4인 / 최대 5인', checkin: '15:00 / 11:00' },
+      spec: { info: '12평 · 2층 · 원룸형 · 온돌 · 취사 가능', people: '기준 4인 / 최대 5인', checkin: '15:00 / 11:00' },
       amenities: ['무선 와이파이', '에어컨', 'TV', '냉장고', '전기포트', '취사도구', '침구 · 수건', '주차'],
       images: [IMG + 'room-202-1.jpg', IMG + 'room-202-2.jpg', IMG + 'room-202-3.jpg', IMG + 'room-202-4.jpg', IMG + 'room-202-5.jpg']
     },
     {
       id: 'room-203', label: '203호', en: 'ROOM 203', name: '203호',
       desc: '2층 코너에 자리한 10평 아담한 객실입니다.\n조용히 쉬어가기 좋습니다.',
-      spec: { info: '10평 · 2층 · 원룸형 · 취사 가능', people: '기준 3인 / 최대 4인', checkin: '15:00 / 11:00' },
+      spec: { info: '10평 · 2층 · 원룸형 · 침대 · 취사 가능', people: '기준 3인 / 최대 4인', checkin: '15:00 / 11:00' },
       amenities: ['무선 와이파이', '에어컨', 'TV', '냉장고', '전기포트', '취사도구', '침구 · 수건', '주차'],
       images: [IMG + 'room-203-1.jpg', IMG + 'room-203-2.jpg', IMG + 'room-203-3.jpg', IMG + 'room-203-4.jpg']
     }
