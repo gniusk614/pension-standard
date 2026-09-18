@@ -50,14 +50,18 @@
   }
 
   /* ---------- 인증 ---------- */
+  var appReady = false;
+  function showApp(user) {
+    $('#login').hidden = true; $('#app').hidden = false;
+    $('#who').textContent = user ? user.email : '';
+    if (appReady) return; appReady = true;
+    loadContent();
+  }
+  // 로그인 상태 유지 시도(저장소 제한 환경이면 실패해도 세션 내 동작은 됨)
+  try { auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).catch(function () {}); } catch (e) {}
   auth.onAuthStateChanged(function (user) {
-    if (user) {
-      $('#login').hidden = true; $('#app').hidden = false;
-      $('#who').textContent = user.email;
-      loadContent();
-    } else {
-      $('#app').hidden = true; $('#login').hidden = false;
-    }
+    if (user) showApp(user);
+    else { appReady = false; $('#app').hidden = true; $('#login').hidden = false; }
   });
   $('#loginForm').addEventListener('submit', function (e) {
     e.preventDefault();
@@ -70,7 +74,7 @@
       setMsg('loginMsg', '응답이 지연되고 있어요. 네트워크 상태를 확인하고 다시 시도해 주세요.', 'err');
     }, 15000);
     auth.signInWithEmailAndPassword($('#email').value.trim(), $('#password').value)
-      .then(function () { settled = true; clearTimeout(timer); /* 화면 전환은 onAuthStateChanged */ })
+      .then(function (cred) { settled = true; clearTimeout(timer); showApp(cred && cred.user); })
       .catch(function (err) {
         if (settled) return; settled = true; clearTimeout(timer); btn.disabled = false;
         var m = (err.code === 'auth/invalid-credential' || err.code === 'auth/wrong-password' ||
